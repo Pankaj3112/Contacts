@@ -54,6 +54,17 @@ function Contact({ contact, setContacts }) {
             }
           });
         });
+      })
+      .catch(() => {
+        setContacts((prevContacts) => {
+          return prevContacts.map((contact) => {
+            if (contact.id === id) {
+              return { ...updatedContact, id: id };
+            } else {
+              return contact;
+            }
+          });
+        });
       });
 
     setEditable(false);
